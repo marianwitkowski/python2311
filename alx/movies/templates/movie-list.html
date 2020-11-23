@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista filmów</title>
+    <link rel="stylesheet" href="{% static "main.css" %}">
+</head>
+<body>
+
+{# komentarz #}
+
+<!-- komentarz -->
+<h1>Lista filmów</h1>
+<ul>
+    {% for movie in movies %}
+        <li>
+            <p>
+                <b>{{ movie.title }} - {{ movie.year }}</b><br/>
+                <p style="font-size:16px;">{{ movie.description }}</p>
+                <small>MPAA: {{ movie.get_mpaa_rating_display  }} </small><br/>
+                {% if movie.poster|length > 0 %}
+                <a href="{{ media_url }}{{ movie.poster }}" target="_blank" >Poster</a>
+                {% endif %}
+            </p>
+            <p>
+                Aktorzy:
+                <ul>
+                    {% for actor in movie.actors.all %}
+                        <li>{{ actor }}</li>
+                    {% endfor %}
+                </ul>
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
