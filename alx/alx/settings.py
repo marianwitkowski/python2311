@@ -25,7 +25,7 @@ SECRET_KEY = 'zu5f_02k^4r@yp8z$9wcdusqc76i6$**zw-+hyheabqa3(6peo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["django3.eba-cmv2gftk.eu-west-1.elasticbeanstalk.com"]
+ALLOWED_HOSTS = ["django3.eba-cmv2gftk.eu-west-1.elasticbeanstalk.com",  '127.0.0.1' ]
 
 
 # Application definition
@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movies',
+    'movies', 'rentflat', "import_export",
     'crispy_forms',
+    'rest_framework', 'drf_yasg', 'rest_framework_api_key',
     #'snowpenguin.django.recaptcha2'
 ]
 
@@ -144,3 +145,10 @@ MEDIA_URL = "/media/"
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "movie_list"
 LOGOUT_REDIRECT_URL = "/logout-done"
+
+# stronicowanie danych z API
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS" : "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE" : 100,
+    #"DEFAULT_PERMISSION_CLASSES" : [ "rest_framework_api_key.permissions.HasAPIKey" ]
+}
