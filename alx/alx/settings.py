@@ -25,12 +25,13 @@ SECRET_KEY = 'zu5f_02k^4r@yp8z$9wcdusqc76i6$**zw-+hyheabqa3(6peo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["alx-test1132.eba-w7baukmc.eu-west-1.elasticbeanstalk.com", "127.0.0.1"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    #'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,8 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movies',
-    'crispy_forms'
+    'crispy_forms',
+    #'snowpenguin.django.recaptcha2'
 ]
+
+RECAPTCHA_PRIVATE_KEY = "6LfhMusZAAAAAIHsUp2HeMvrBUL9h1Js58Y7-NZZ"
+RECAPTCHA_PUBLIC_KEY = "6LfhMusZAAAAAFzSzcfTTLtDoH2OV5QQZVoWqu2z"
+MULTI_CAPTCHA_ADMIN = {
+    "engine" : "recaptcha2"
+}
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
