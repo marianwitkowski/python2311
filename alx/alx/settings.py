@@ -25,7 +25,7 @@ SECRET_KEY = 'zu5f_02k^4r@yp8z$9wcdusqc76i6$**zw-+hyheabqa3(6peo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["alx-test1132.eba-w7baukmc.eu-west-1.elasticbeanstalk.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["django3.eba-cmv2gftk.eu-west-1.elasticbeanstalk.com"]
 
 
 # Application definition
