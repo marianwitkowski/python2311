@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movies'
+    'movies',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 RESTRICT_IPS = False
 #ALLOWED_IPS = ['127.0.0.1']
@@ -132,3 +135,4 @@ MEDIA_URL = "/media/"
 
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "movie_list"
+LOGOUT_REDIRECT_URL = "/logout-done"

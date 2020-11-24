@@ -10,5 +10,7 @@ urlpatterns = [
     path("list", movielist_response, name="movie_list" ),
     path("movieadd", movieadd_response),
 
-    path("login", auth_views.LoginView.as_view() )
+    path("login", auth_views.LoginView.as_view() ),
+    path("logout", auth_views.LogoutView.as_view(), name="logout" ),
+    path("logout-done", logout_done)
 ]

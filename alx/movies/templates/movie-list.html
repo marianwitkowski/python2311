@@ -12,6 +12,11 @@
 
 <!-- komentarz -->
 <h1>Lista filmów</h1>
+
+<p>
+    Zalogowany jako {{ user.username }}. <a href="{% url 'logout' %}">Logout</a>
+</p>
+
 <ul>
     {% for movie in movies %}
         <li>

@@ -25,6 +25,11 @@ def movieadd_response(request):
 
     form = MovieForm(request.POST or None, request.FILES or None)
     if form.is_valid():
-        form.save()
+        movie = form.save(commit=False)
+        movie.created_by = request.user
+        movie.save()
         return redirect(movielist_response)
     return render(request, "movie-add.html", {"form" : form})
+
+def logout_done(request):
+    return render(request, "logout-done.html")
