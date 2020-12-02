@@ -4,12 +4,22 @@ from django.http.request import HttpRequest
 import time
 import minify_html
 import htmlmin
-import sys
+import sys, traceback, json, logging
+import cloudwatch
 
 
 class CustomMiddleware():
 
     def __init__(self, get_response):
+        self.logger = logging.getLogger("alx")
+        fmt = logging.Formatter("%(asctime)s : %(levelname)s - %(message)s ")
+        handler = cloudwatch.CloudwatchHandler("ACCESS",
+                                               "SECRET_KEY",
+                                               "eu-central-1", "alx", "django")
+        handler.setFormatter(fmt)
+        self.logger.setLevel(logging.INFO)
+        self.logger.addHandler(handler)
+
         self.get_response = get_response
 
 
@@ -48,6 +58,11 @@ class CustomMiddleware():
 
     def process_exception(self, request : HttpRequest, exception):
         exc_type, exc_obj, exc_tb = sys.exc_info()
-        fname = exc_tb.tb_frame.f_code.co_filename
-        print("plik :",fname)
+        err = {
+            "type" : str(exception.__class__.__name__),
+            "traceback" : str(traceback.format_exc()),
+            "headers" : str(request.headers),
+            "meta" : str(request.META)
+        }
+        self.logger.error(json.dumps(err))
         return HttpResponseServerError("Awaria - pracujemy nad tym")

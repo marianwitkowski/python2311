@@ -66,3 +66,24 @@ class Movie(models.Model):
     class Meta:
         verbose_name = "Film"
         verbose_name_plural = "Filmy"
+
+
+class Log(models.Model):
+    message = models.TextField(null=False)
+
+# nasłuchiwanie sygnałów
+from django.db.models import signals
+from django.dispatch import receiver
+
+@receiver(signals.pre_save, sender=Movie)
+def title_up(sender, instance, **kwargs):
+    print("signal pre_save = Movie")
+    instance.title = instance.title.upper()
+
+
+@receiver(signals.post_save, sender=Movie)
+def movie_added(sender, instance, created, **kwargs):
+    print("signal post_save = Movie")
+    log = Log()
+    log.message = f"Dodano nowy film: {instance.title}"
+    log.save()

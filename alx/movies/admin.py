@@ -16,6 +16,7 @@ class MovieAdmin(admin.ModelAdmin):
 #admin.site.register(Movie, MovieAdmin)
 admin.site.register(Actor)
 admin.site.register(Comment)
+admin.site.register(Log)
 
 #####################################
 admin.site.site_header = "Filmoteka"

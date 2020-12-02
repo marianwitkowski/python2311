@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'movies', 'rentflat', "import_export",
+    'movies.apps.MoviesConfig',
+    'rentflat', "import_export",
     'crispy_forms',
     'rest_framework', 'drf_yasg', 'rest_framework_api_key',
     #'snowpenguin.django.recaptcha2'
