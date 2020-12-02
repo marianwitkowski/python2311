@@ -155,3 +155,8 @@ REST_FRAMEWORK = {
     "PAGE_SIZE" : 100,
     #"DEFAULT_PERMISSION_CLASSES" : [ "rest_framework_api_key.permissions.HasAPIKey" ]
 }
+
+CELERY_BROKER_URL = "redis://51.91.120.89:6379/2"
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_RESULT_BACKEND = "redis://51.91.120.89:6379/3"

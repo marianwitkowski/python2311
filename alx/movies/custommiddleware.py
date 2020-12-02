@@ -13,8 +13,8 @@ class CustomMiddleware():
     def __init__(self, get_response):
         self.logger = logging.getLogger("alx")
         fmt = logging.Formatter("%(asctime)s : %(levelname)s - %(message)s ")
-        handler = cloudwatch.CloudwatchHandler("ACCESS",
-                                               "SECRET_KEY",
+        handler = cloudwatch.CloudwatchHandler("AKIAY3OL7L2FDBZAYO4M",
+                                               "Js3GaGVLddPRN/bFdEWr3KROPfbo2AWaSugK7Jrt",
                                                "eu-central-1", "alx", "django")
         handler.setFormatter(fmt)
         self.logger.setLevel(logging.INFO)

@@ -7,6 +7,12 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+from .tasks import long_taks
+
+def newtask(request, id):
+    token = long_taks.delay(id)
+    return HttpResponse(f"NEW TASK: {token}")
+
 def error(request):
     raise TypeError("Invalid type")
     return HttpResponse("OK")
