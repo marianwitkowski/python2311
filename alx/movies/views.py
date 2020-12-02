@@ -7,6 +7,10 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+def error(request):
+    raise TypeError("Invalid type")
+    return HttpResponse("OK")
+
 def startpage_response(request):
     return HttpResponse(request.user.username)
 

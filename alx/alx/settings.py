@@ -66,7 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'ip_restriction.IpWhitelister'
+    'ip_restriction.IpWhitelister',
+    'movies.custommiddleware.CustomMiddleware'
 ]
 
 ROOT_URLCONF = 'alx.urls'
@@ -82,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'movies.context_processors.make_signature'
             ],
         },
     },
